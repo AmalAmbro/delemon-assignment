@@ -39,3 +39,17 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+class FileData(models.Model):
+    category = models.CharField(max_length=100)
+    type = models.CharField(max_length=100)
+    views = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    total_sq_ft = models.DecimalField(max_digits=10, decimal_places=2)
+    rate_per_sq_ft = models.DecimalField(max_digits=10, decimal_places=2)
+    unit_no = models.CharField(max_length=100)
+
+    uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="uploaded_data")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.unit_no} - {self.category}"

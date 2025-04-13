@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from users.models import User
+from users.models import User, FileData
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
+class FileDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FileData
+        fields = '__all__'
+        read_only_fields = ['uploaded_by', 'uploaded_at']
