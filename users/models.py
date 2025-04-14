@@ -42,7 +42,7 @@ class User(AbstractUser):
 class FileData(models.Model):
     category = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
-    views = models.IntegerField()
+    views = models.CharField(max_length=128)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     total_sq_ft = models.DecimalField(max_digits=10, decimal_places=2)
     rate_per_sq_ft = models.DecimalField(max_digits=10, decimal_places=2)
